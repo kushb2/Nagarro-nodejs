@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO APP</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="alert alert-warning "><b>My Todo List</b></div>
+<div class="container ActiveContainer">
+    <br><br>
+    <!-- Active TODOS are there stand  with id = active -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="alert alert-success">
+                <div class="active"><b>Active Todos</b></div>
+            </div>
+            <div id="active"></div>
+        </div>
+    </div>
+    <hr align="left" width="50%" color="#000000">
+
+    <div class="row">
+    <input id="newTodo" type = "text" class="col-md-6" placeholder="Enter a New Task" onchange="addTodoAjax()">
+    </div>
+    <hr align="left"   width="50%" color="#000000">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="alert alert-info">
+                <b>Completed Todos</b>
+                <button id = 'completeButton' class="drop" onclick="hide('complete','completeButton')">&and;</button>
+            </div>
+            <div id ='Complete'></div>
+        </div>
+    </div>
+    <hr align="left"   width="50%" color="#000000">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="alert alert-warning">
+                <b>Deleted Todos</b>
+                <button id = 'deleteButton' class="drop" onclick="hide('deleted','deleteButton')">&and;</button>
+            </div>
+            <div id ='Deleted'>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
