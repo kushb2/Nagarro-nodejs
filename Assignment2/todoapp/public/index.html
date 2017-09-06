@@ -15,7 +15,7 @@
     <!-- Active TODOS are there stand  with id = active -->
     <div class="row">
         <div class="col-md-6">
-            <div class="alert alert-success">
+            <div class=" alert-success">
                 <div class="active"><b>Active Todos</b></div>
             </div>
             <div id="active"></div>
@@ -30,9 +30,10 @@
 
     <div class="row">
         <div class="col-md-6">
-            <div class="alert alert-info">
+            <div class=" alert-info">
                 <b>Completed Todos</b>
-                <button id = 'completeButton' class="drop" onclick="hide('complete','completeButton')">&and;</button>
+                <a  id="completeLink" class="drop" onclick="hide('Complete','completeLink')">Hide</a>
+          <!--      <button id = 'completeButton' class="drop" onclick="hide('complete','completeButton')">&and;</button> -->
             </div>
             <div id ='Complete'></div>
         </div>
@@ -41,9 +42,10 @@
 
     <div class="row">
         <div class="col-md-6">
-            <div class="alert alert-warning">
+            <div class=" alert-warning">
                 <b>Deleted Todos</b>
-                <button id = 'deleteButton' class="drop" onclick="hide('deleted','deleteButton')">&and;</button>
+                <a  id="deleteLink" class="drop" onclick="hide('Deleted','deleteLink')">Hide</a>
+            <!--    <button id = 'deleteButton' class="drop" onclick="hide('deleted','deleteButton')">&and;</button> -->
             </div>
             <div id ='Deleted'>
             </div>

@@ -7,12 +7,11 @@ const  NewTodoId = "newTodo";
 window.onload = getTodo();// getTodoAJAX
 
 function addTodoElement(todoData) {
-    //console.log(todoData);
+    console.log('addTodoElement');
      let ActiveParent =  document.getElementById(ActiveTodoId);
      let CompleteParent =  document.getElementById(CompleteTodoId);
      let DeletedParent =  document.getElementById(DeletedTodoId);
-    ActiveParent.innerHTML = '';
-        //= CompleteParent.innerHTML = DeletedParent.innerHTML = '';
+    ActiveParent.innerHTML = CompleteParent.innerHTML = DeletedParent.innerHTML = '';
 
     list = JSON.parse(todoData);
 
@@ -20,24 +19,28 @@ function addTodoElement(todoData) {
     console.log(keys);
     keys.forEach(function (t) {
        element  =  createTodoElement(t,list[t]);
+       console.log(element);
        if(element.parent === 'Active'){
           //console.log("Active " + t);
            ActiveParent.appendChild(element.element);
        }
         else if(element.parent === 'Delete'){
-            ActiveParent.appendChild(element.element);
+           DeletedParent.appendChild(element.element);
         }
         else if(element.parent === 'Complete'){
-            ActiveParent.appendChild(element.element);
+           CompleteParent.appendChild(element.element);
         }
     });
 };
 
 
 function createTodoElement(id,data) {
+    console.log('createTodoElement');
+   // console.log(data);
     newElement = document.createElement('div'); //create new layout div
     newElement.setAttribute('id',id);//set layout id as id key
     if(data.status !== 'Delete'){ // either active or completed
+     //   console.log("yeah");
         // bith need a checkbox a lebel and a button with cross sign
         newElement.setAttribute('class','row'); // set class row
         checkBox = document.createElement('input');
@@ -60,8 +63,9 @@ function createTodoElement(id,data) {
         close.innerHTML = '&times;'; // cross sign
         close.setAttribute('onclick', 'deleteTodoAJAX('+id+')');
         newElement.appendChild(close);
-    } else newElement.innerText = todo.title;
-
+    } else {
+        newElement.innerText = data.title;
+    }
     return ({parent: data.status, element: newElement});
     }
     
@@ -103,6 +107,7 @@ function createTodoElement(id,data) {
 
 // get all todos from  db call addtodoelements
 function getTodo() {
+    console.log('getTodo');
     xhr = new XMLHttpRequest();
       xhr.open("GET","/api/todos",true);
     xhr.onreadystatechange = function () {
@@ -153,15 +158,41 @@ function deleteTodoAJAX(id) {
                 ActiveParent.removeChild(oldchild);
             }
             else{
+             //   console.log(id);
+               // console.log(oldchild);
                 let CompleteParent = document.getElementById(CompleteTodoId);
-                CompleteParent.removeChild(oldchilds);
+                CompleteParent.removeChild(oldchild);
             }
+            //console.log("res");
             let newElement = createTodoElement(id,data.todo);
+            console.log(newElement);
             let DeleteParent = document.getElementById(DeletedTodoId);
             DeleteParent.appendChild(newElement.element);
           }
       }
-
     };
     xhr.send(null);
+}
+
+
+function hide(Divid,linkId) {
+    let link = document.getElementById(linkId);
+    let div = document.getElementById(Divid);
+    if(div.style.display === 'none'){
+
+        console.log("Set to Show");
+        console.log(div.style.display);
+        div.style.display = 'block';
+        link.innerText = "Hide";
+    }
+    else{
+        console.log("Set to Hide");
+        console.log(div.style.display);
+        div.style.display = 'none';
+        link.innerText = "Show";
+    }
+
+
+
+
 }

@@ -17,6 +17,16 @@ input[type = checkbox]{
 }
 
 
+.drop{
+    float: right;
+    font-size: 1rem;
+    font-weight: bolder;
+    text-shadow: 0 1px 0 #fff;
+    color: inherit;
+    opacity: 1;
+}
+
+
 .close {
     float: right;
     font-size: 1.5rem;
@@ -32,5 +42,40 @@ input[type = checkbox]{
     text-decoration: none;
     cursor: pointer;
     opacity: .75;
+}
+
+#Deleted{
+    text-decoration: line-through;
+    text-decoration-color: red ;
+}
+
+
+#complete div:nth-child(even) {
+    color: #5F5F5F;
+    padding: 10px;
+}
+
+#complete div:nth-child(odd){
+    color: #5CB660;
+}
+
+
+#active div:nth-child(even) {
+    color: #5F5F5F;
+}
+
+#active div:nth-child(odd) {
+    color: saddlebrown;
+}
+
+
+
+
+#Deleted div:nth-child(even) {
+    color: #5F5F5F;
+}
+
+#Deleted div:nth-child(odd){
+    color: #ffa84c;
 }
 
